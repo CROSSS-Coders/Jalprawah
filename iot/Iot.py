@@ -26,7 +26,7 @@ flag=0
 
 door_open = 0
 
-URL = "http://ec2-15-206-145-17.ap-south-1.compute.amazonaws.com/iot/store" 
+URL = "http://9f844416e94f.ngrok.io/iot/store"  #"http://ec2-15-206-145-17.ap-south-1.compute.amazonaws.com/iot/store" 
 
 class Forecast:
     '''
@@ -86,13 +86,13 @@ class Forecast:
         return change_sum
 
 
-def upload_to_database(created_at,level, humidity, temperature, DOOR,fore):
+def upload_to_database(created_at,level, humidity, temperature, DOOR,forecast_string):
     '''
     Uploads to database
     '''
     
-    print(level, humidity, temperature, DOOR,fore)
-    payload = {'created_at':created_at,'water_level': level,'humidity': humidity,'temperature': temperature, 'door_open': DOOR, 'fore':fore}
+    print(level, humidity, temperature, DOOR,forecast_string)
+    payload = {'created_at':created_at,'water_level': level,'humidity': humidity,'temperature': temperature, 'door_open': DOOR, 'forecast_string':forecast_string}
     print(created_at)
 
     headers= {}
@@ -121,11 +121,11 @@ def handle(msg):
         		bot.sendMessage(chat_id, str(humidity))
     		elif command == '/a1':
         		bot.sendMessage(chat_id, str("Alert is ON"))
-        		GPIO.output(red_led_pin, True)
+        		GPIO.output(40,1)
 			GPIO.output(22,1)
     		elif command == '/a0':
         		bot.sendMessage(chat_id, str("Alert is OFF"))
-        		GPIO.output(red_led_pin, False)
+        		GPIO.output(40,0)
 			GPIO.output(22,0)
     		elif command == '/d11':
         		bot.sendMessage(chat_id, str("DOOR 1 OPEN"))
@@ -234,10 +234,11 @@ while True:
        forecast.push(level)
        normal_level, warning_level, danger_level, highest_flood_level = forecast.make_forecast()
     
-       lis=[normal_level, warning_level, danger_level, highest_flood_level]
-
-       fore=max(lis)
-
+       water_values = forecast.make_forecast()
+       water_list = list(water_values)
+       index = np.argmax(water_list)
+       forecast_string = 'Normal' if index == 0 else 'Warning' if index == 1 else 'Danger' if index == 2 else 'HFL' if index == 3 else 'No Data'
+ 
        print('Forecast completed')
 
     
@@ -246,10 +247,9 @@ while True:
        if(flag == 0): 
          p.start(7.5)
          r.start(7.5)
-    	 if(level > 18):
+    	 if(level > 17):
             door_open= 1
-            p.ChangeDutyCycle(12.5) 
-
+            p.ChangeDutyCycle(12.5)
     	 if(level > 20.5):   
             door_open= 2
             r.ChangeDutyCycle(12.5)
@@ -267,7 +267,7 @@ while True:
     
 
        if time.time() - start_time >= 3:
-          upload_thread = Thread(target=upload_to_database, args=(created_at,level, humidity, temperature, door_open,fore))
+          upload_thread = Thread(target=upload_to_database, args=(created_at,level, humidity, temperature, door_open,forecast_string))
           upload_thread.start()
           start_time = time.time()
 
