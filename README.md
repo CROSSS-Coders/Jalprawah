@@ -61,6 +61,7 @@
 - [Twitter Bot](https://twitter.com/jalpravah)
 - [Telegram Bot](https://t.me/jalpravah)
 - [Demo Video](https://drive.google.com/file/d/1UM8-7itPYQutCsj18BmmZBFsCTRLKLnp/view?usp=sharing)
+- [Presentation](https://drive.google.com/file/d/1UM8-7itPYQutCsj18BmmZBFsCTRLKLnp/view)
 
 ## Installation
 > Installation Guide is present in each related submodules. 
@@ -69,4 +70,4 @@
 <br>
 <br>
 <br>
-<h3 align="center"><b>Developed with :heart: by <a href="https://github.com/pushpak1300">Kevlyn </a> , <a href="https://github.com/yogendra-yatnalkar"> Sanil </a> , <a href="https://github.com/tanmay8266">Smith </a>,<a href="https://github.com/HanozDar">Selvin </a> ,<a href="https://github.com/HanozDar">Rincy  </a> <a href="https://github.com/pushpak1300">Pushpak  </a>.</b></h1>
+<h3 align="center"><b>Developed with :heart: by <a href="https://github.com/kad99kev">Kevlyn </a> , <a href="https://github.com/sanilrod"> Sanil </a> , <a href="https://github.com/Smithdabreo">Smith </a>,<a href="https://github.com/selvintuscano">Selvin </a> ,<a href="https://github.com/rincypereira">Rincy  </a> <a href="https://github.com/pushpak1300">Pushpak  </a>.</b></h1>
