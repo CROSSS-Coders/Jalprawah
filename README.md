@@ -61,7 +61,7 @@
 - [Twitter Bot](https://twitter.com/jalpravah)
 - [Telegram Bot](https://t.me/jalpravah)
 - [Demo Video](https://drive.google.com/file/d/1UM8-7itPYQutCsj18BmmZBFsCTRLKLnp/view?usp=sharing)
-- [Presentation](https://drive.google.com/file/d/1UM8-7itPYQutCsj18BmmZBFsCTRLKLnp/view)
+- [Presentation](https://github.com/CROSSS-Coders/LN379_CROSSSCoders/blob/master/Team%20CrossCoders.pdf)
 
 ## Installation
 > Installation Guide is present in each related submodules. 
