@@ -57,7 +57,7 @@
 
 ## Working Link
 - [Web App](https://jalpravah.pushpak1300.me)
-- [Mobile App](https://jalpravah.pushpak1300.me)
+- [Mobile App](https://github.com/CROSSS-Coders/LN379_CROSSSCoders/blob/master/JalPravah.apk)
 - [Twitter Bot](https://twitter.com/jalpravah)
 - [Telegram Bot](https://t.me/jalpravah)
 - [Demo Video](https://drive.google.com/file/d/1UM8-7itPYQutCsj18BmmZBFsCTRLKLnp/view?usp=sharing)
