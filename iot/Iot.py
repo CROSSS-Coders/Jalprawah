@@ -5,8 +5,6 @@ import requests
 import numpy as np
 from datetime import datetime
 from threading import Thread
-import telepot   
-from telepot.loop import MessageLoop   
 import socket
 
 GPIO.setmode(GPIO.BOARD)
@@ -26,7 +24,7 @@ flag=0
 
 door_open = 0
 
-URL = "http://9f844416e94f.ngrok.io/iot/store"  #"http://ec2-15-206-145-17.ap-south-1.compute.amazonaws.com/iot/store" 
+URL = "https://api.pushpak1300.me/iot/store"  #"http://ec2-15-206-145-17.ap-south-1.compute.amazonaws.com/iot/store" 
 
 class Forecast:
     '''
@@ -106,83 +104,6 @@ forecast=Forecast(216)
 
 start_time = time.time() # This will be used to upload values to DB after every 3 seconds
 
-def handle(msg):
-    		chat_id = msg['chat']['id'] 
-    		command = msg['text']   
-
-    		print ('Received:')
-    		print(command)
-
-    		if command == '/lev':
-        		bot.sendMessage (chat_id, str(level))
-    		elif command == '/tem':
-        		bot.sendMessage(chat_id, str(temperature))
-    		elif command == '/hum':
-        		bot.sendMessage(chat_id, str(humidity))
-    		elif command == '/a1':
-        		bot.sendMessage(chat_id, str("Alert is ON"))
-        		GPIO.output(40,1)
-			GPIO.output(22,1)
-    		elif command == '/a0':
-        		bot.sendMessage(chat_id, str("Alert is OFF"))
-        		GPIO.output(40,0)
-			GPIO.output(22,0)
-    		elif command == '/d11':
-        		bot.sendMessage(chat_id, str("DOOR 1 OPEN"))
-        		p.ChangeDutyCycle(12.5)
-    		elif command == '/d10':
-        		bot.sendMessage(chat_id, str("DOOR 1 CLOSE"))
-        		p.ChangeDutyCycle(7.5)
-    		elif command == '/d21':
-        		bot.sendMessage(chat_id, str("DOOR 2 OPEN"))
-        		r.ChangeDutyCycle(12.5)
-    		elif command == '/d20':
-        		bot.sendMessage(chat_id, str("DOOR 2 CLOSE"))
-        		r.ChangeDutyCycle(7.5)
-		elif command == '/man':
-        		bot.sendMessage(chat_id, str("Manual Mode"))
-                        global flag
-        		flag=1
-		elif command == '/auto':
-        		bot.sendMessage(chat_id, str("Auto Mode"))
-                        global flag
-                        flag=0
-		elif command == '/start':
-        		bot.sendMessage(chat_id, str("WELCOME to JalPravha Bot"))
-                        
-
-
-bot = telepot.Bot('1047715107:AAG3YauOnxefsw4Gs-hPpK3LZEojO3fPa6c')
-
-MessageLoop(bot, handle).run_as_thread()
-print ('Listening....')
-
-def checkcon(mem1 = 0):
-	try:
-           host = socket.gethostbyname(
-           "ec2-15-206-145-17.ap-south-1.compute.amazonaws.com/fhfh"
-           )  # Change to personal choice of site
-           s = socket.create_connection((host, 80), 2)
-           s.close()
-           mem2 = 1
-           if mem2 == mem1:
-	      print("Internet is down")
-              return False
-           else:
-               mem1 = mem2
-               print("Internet is working")  # Will be executed on state change
-	       return True
-    	except Exception as e:
-              mem2 = 0
-              if mem2 == mem1:
-	         print("Internet is down")
-                 return False
-              else:
-                 mem1 = mem2
-                 print("Internet is down")
-    	         return False
-
-
 while True: 
         
        GPIO.output(38,1)  
@@ -235,10 +156,11 @@ while True:
        normal_level, warning_level, danger_level, highest_flood_level = forecast.make_forecast()
     
        water_values = forecast.make_forecast()
+       print(water_values)
        water_list = list(water_values)
        index = np.argmax(water_list)
        forecast_string = 'Normal' if index == 0 else 'Warning' if index == 1 else 'Danger' if index == 2 else 'HFL' if index == 3 else 'No Data'
- 
+       print(forecast_string)
        print('Forecast completed')
 
     
@@ -250,6 +172,7 @@ while True:
     	 if(level > 17):
             door_open= 1
             p.ChangeDutyCycle(12.5)
+	      
     	 if(level > 20.5):   
             door_open= 2
             r.ChangeDutyCycle(12.5)
@@ -273,5 +196,3 @@ while True:
 
        print('Finished uploading')
        time.sleep(0.2)
-
-    
