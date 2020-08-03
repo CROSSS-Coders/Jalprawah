@@ -1,5 +1,3 @@
-# JalPravah - CROSSS_Coders (Main Repo)
+# JalPravah (LN397_CROSS_Coders)
 
-#### Mobile-App and Web-App Code is divided in diffrent submodules.
-
-![JalPravah](https://github.com/CROSSS-Coders/LN379_CROSSSCoders-App/raw/master/assets/logo.png)
+<img height="100px" width="300px" src="https://github.com/CROSSS-Coders/LN379_CROSSSCoders-App/raw/master/assets/logo.png">
