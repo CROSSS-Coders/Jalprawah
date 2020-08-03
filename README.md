@@ -60,7 +60,7 @@
 - [Mobile App](https://github.com/CROSSS-Coders/LN379_CROSSSCoders/blob/master/JalPravah.apk)
 - [Twitter Bot](https://twitter.com/jalpravah)
 - [Telegram Bot](https://t.me/jalpravah)
-- [Demo Video](https://drive.google.com/file/d/1UM8-7itPYQutCsj18BmmZBFsCTRLKLnp/view?usp=sharing)
+- [Demo Video](https://drive.google.com/file/d/1jk6pu-URaWbsZ9ktLqn3GGOU0-KdfTiK/view?usp=sharing)
 - [Presentation](https://github.com/CROSSS-Coders/LN379_CROSSSCoders/blob/master/Team%20CrossCoders.pdf)
 
 ## Installation
