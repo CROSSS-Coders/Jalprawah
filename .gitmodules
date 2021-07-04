@@ -4,3 +4,9 @@
 [submodule "LN379_CROSSSCoders-App"]
 	path = LN379_CROSSSCoders-App
 	url = https://github.com/CROSSS-Coders/LN379_CROSSSCoders-App.git
+[submodule "Web"]
+	path = Web
+	url = https://github.com/CROSSS-Coders/LN379_CROSSSCoders-Web
+[submodule "App"]
+	path = App
+	url = https://github.com/CROSSS-Coders/LN379_CROSSSCoders-App
